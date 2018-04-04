@@ -25,8 +25,8 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 ```html
 <co-select></co-select>
 ```
-1.不建议直接引用该组件，建议再进行一层封装之后，再使用。
-2.封装传入参数：
+#1.不建议直接引用该组件，建议再进行一层封装之后，再使用。
+#2.封装传入参数：
   theadList: [{ // Array 表头
      'tableName': '供应商No',
      'tableField': 'supplierNo',
@@ -44,7 +44,7 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
   disabled  // Boolean input输入框是否禁用
   bindKey // 查询条件中间的字段
   backFillContent // 初始化回填内容
-3.如果接口返回的数据格式有一些特殊，可以自己传入处理数据函数。 通过prop中的 bindFun 传入
-4.事件抛出。 统一使用 change
-5.分页默认的size是10
+#3.如果接口返回的数据格式有一些特殊，可以自己传入处理数据函数。 通过prop中的 bindFun 传入
+#4.事件抛出。 统一使用 change
+#5.分页默认的size是10
 ```
