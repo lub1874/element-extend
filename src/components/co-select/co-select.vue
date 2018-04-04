@@ -32,7 +32,7 @@
           </tr>
           </tfoot>
         </table>
-        <el-input v-model="queryCondition.request.keyword"  class="co-select_input"
+        <input v-model="queryCondition.request.keyword"  class="co-select_input"
                :placeholder="placeholder"
                slot="reference"
                :disabled="disabled" />
