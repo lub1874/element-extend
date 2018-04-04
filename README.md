@@ -48,6 +48,8 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
   backFillContent // 初始化回填内容
 ```
 3.如果接口返回的数据格式有一些特殊，可以自己传入处理数据函数。 通过prop中的 bindFun 传入
+
 4.事件抛出。 统一使用 change
+
 5.分页默认的size是10
 ```
