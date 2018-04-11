@@ -92,6 +92,12 @@
       disabled: {
         type: Boolean,
         default: false
+      },
+      requestObj: { // 外部传入的查询条件
+        type: Object,
+        default: function () {
+          return {}
+        }
       }
     },
     data () {
@@ -180,6 +186,16 @@
         if (self.disabled) {
           return
         }
+        // 把多重查询条件添加到queryConditon.request中
+        for (let item in self.requestObj) {
+          self.queryCondition.request[item] = self.requestObj[item]
+        }
+        // 删除查询条件中空选项
+        for (let item in self.queryCondition.request) {
+          if (!self.queryCondition.request[item]) {
+            delete self.queryCondition.request[item]
+          }
+        }
         jQuery.ajax({
           type: 'post',
           async: false,
@@ -208,29 +224,6 @@
           }
         })
       },
-      //   const url = self.getRoot() + '/api/' + self.url
-      //   const parameter = {parameter: JSON.stringify({'body': self.queryCondition})}
-      //   axios.post(url, parameter).then(res => {
-      //     if (res.data.status === 1 && JSON.stringify(res.data.success) !== '{}') {
-      //       if (self.backFillContent === self.queryCondition.request.keyword) {
-      //         self.launch = false
-      //       } else {
-      //         self.launch = true
-      //       }
-      //       self.clearSelectData()
-      //       self.currentPage = 1
-      //       self.tableData = this.bindFun(res.data)
-      //     } else {
-      //       self.launch = true
-      //     }
-      //   }).catch(e => {
-      //     this.$message({
-      //       showClose: true,
-      //       message: '接口请求失败，请重试',
-      //       type: 'error'
-      //     })
-      //   })
-      // },
       clearSelectData: function () { // 清除选中的数据
         this.currentIndex = []
         this.selectedData = []
@@ -418,7 +411,6 @@
       font-family: 微软雅黑regular;
       float: right;
     }
-
     .co-select_btn:hover {
       opacity: 0.7;
     }
